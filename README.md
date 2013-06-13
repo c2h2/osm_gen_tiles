@@ -37,10 +37,12 @@ to drop the db and re-import data:
 
     sudo -u postgres -i -H
     dropdb 'china'
+    createdb -E UTF8 -O c2h2 china
     psql -d china -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
     psql -d china -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
     psql china -c "ALTER TABLE geometry_columns OWNER TO c2h2"
     psql china -c "ALTER TABLE spatial_ref_sys OWNER TO c2h2"
+    exit
 
 Install osm2pgsql (the osm -> postgis converting tool)
 ------------------------------------------------------------------------------------
@@ -77,7 +79,7 @@ Clone our git: (copied from http://svn.openstreetmap.org/applications/rendering/
     python generate_xml.py osm.xml c2h2_china.xml  --password '' --host 'localhost' --user 'c2h2' --dbname 'china' --port '5432'
     git clone https://github.com/c2h2/osm_gen_tiles.git
     cd osm_gen_tils
-    python gen_china_multi.py c2h2_china.xml
+    python gen_china_multi.py c2h2.xml
 
 
 Delete empty file:  
