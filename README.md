@@ -84,7 +84,7 @@ Clone our git: (copied from http://svn.openstreetmap.org/applications/rendering/
 
 Delete empty file:  
 -------------------------------------------------------    
-     find . -size 103c -exec rm -rf {} \;(......)
+      find . -size 103c -exec rm {} \;
 
     
 wait .... and done!
